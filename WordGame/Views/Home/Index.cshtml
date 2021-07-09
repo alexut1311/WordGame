@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Play word game";
+}
+
+<div class="container" id="main-container" data-home-play-game-url="@Url.Action("PlayGame","Home")">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Your word:</span>
+        </div>
+        <input type="text" class="form-control" aria-label="word" aria-describedby="input-word" id="input-word">
+    </div>
+    <p style="display:none" id="error-for-play-input">---Please write only letters---</p>
+    <div id="dictionary-check" class="text-center">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="custom-dictionary" value="custom" checked>
+            <label class="form-check-label" for="custom-dictionary">
+                Use the custom dictionary
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="we-cant-spell-dictionary" value="we-cant-spell">
+            <label class="form-check-label" for="we-cant-spell-dictionary">
+                Use the online WeCantSpell.Hunspell dictionary
+            </label>
+        </div>
+    </div>
+    <div id="play-button-container" class="row play-button">
+        <div class="col text-center">
+            <button type="button" id="play-button" class="btn btn-primary">Play</button>
+        </div>
+    </div>
+
+    <div id="loader-container" class="loader-container hide">
+        <div class="loader"></div>
+        <p class="d-flex justify-content-center">This might take a while...</p>
+    </div>
+
+    <div id="playground" class="playground hide">
+        <div id="total-count" class="text-center">
+            Total number of words: <span id="word-count" class="word-count"></span>
+        </div>
+        <div id="content" class="content-container"></div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/play-module.js"></script>
+    <script>Play_Module.Init();</script>
+} 

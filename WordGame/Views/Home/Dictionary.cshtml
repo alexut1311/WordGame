@@ -1,0 +1,29 @@
+﻿@model DictionaryViewModel
+
+@{
+    ViewData["Title"] = "Dictionary";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Dictionary">
+    <div class="form-group">
+        <label for="add-new-words">Enter new words separated by space:</label>
+        <textarea class="form-control" id="add-new-words" name="NewWords" asp-for="@Model.NewWords" rows="5"></textarea>
+        <p style="display:none" id="error-for-add-new-words">---Please write only letters and spaces---</p>
+    </div>
+    <div class="dictionary-example">
+        <p>Example: et te eh he het eth</p>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button type="submit" class="btn btn-primary">Add words</button>
+        </div>
+    </div>
+</form>
+<hr />
+<h3>Words currently in the dictionary:</h3>
+<div class="container dictionary">
+    @foreach (string word in Model.CurrentWords)
+    {
+        <span>@word, </span>
+    }
+</div>
